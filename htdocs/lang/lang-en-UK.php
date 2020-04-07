@@ -225,6 +225,7 @@ $lang['settingsSecondSwipe'] = "Second Swipe";
 $lang['settingsSecondSwipeInfo'] = "When you swipe the same RFID a second time, what happens? Start the playlist again? Toggle pause/play?";
 $lang['settingsSecondSwipeRestart'] = "Re-start playlist";
 $lang['settingsSecondSwipeSkipnext'] = "Skip to next track";
+$lang['settingsSecondSwipeJustPlay'] = "Play if not already playing";
 $lang['settingsSecondSwipePause'] = "Toggle pause / play";
 $lang['settingsSecondSwipePlay'] = "Resume playback";
 $lang['settingsSecondSwipeNoAudioPlay'] = "Ignore audio playout triggers, only system commands";

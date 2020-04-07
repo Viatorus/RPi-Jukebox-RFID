@@ -443,6 +443,18 @@ if [ ! -z "$FOLDER" -a ! -z ${FOLDER+x} -a -d "${AUDIOFOLDERSPATH}/${FOLDER}" ];
             # We will not play the playlist but skip to the next track:
             PLAYPLAYLIST=skipnext
             if [ "${DEBUG_rfid_trigger_play_sh}" == "TRUE" ]; then echo "  Completed: skip next track" >> $PATHDATA/../logs/debug.log; fi
+        elif [ "$SECONDSWIPE" == "JUSTPLAY" -a $PLLENGTH -gt 0 ]
+        then
+            # The following involves NOT playing the playlist, so we set:
+            PLAYPLAYLIST=no
+
+            STATE=$(echo -e "status\nclose" | nc -w 1 localhost 6600 | grep -o -P '(?<=state: ).*')
+            if [ $STATE != "play" ]
+            then
+                if [ "${DEBUG_rfid_trigger_play_sh}" == "TRUE" ]; then echo "MPD not playing, start playing" >> $PATHDATA/../logs/debug.log; fi
+                sudo $PATHDATA/playout_controls.sh -c=playerplay &>/dev/null
+            fi
+            if [ "${DEBUG_rfid_trigger_play_sh}" == "TRUE" ]; then echo "  Completed: just play" >> $PATHDATA/../logs/debug.log; fi
         fi
     fi
     # now we check if we are still on for playing what we got passed on:

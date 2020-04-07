@@ -12,7 +12,7 @@ if(isset($_POST['secondSwipe']) && trim($_POST['secondSwipe']) != "") {
         $exec = 'echo "'.$Second_Swipe.'" > '.$conf['settings_abs'].'/Second_Swipe';
         if($debug == "true") {
             print $exec;
-        } 
+        } 	
         exec($exec);
     } elseif(trim($_POST['secondSwipe']) == "PAUSE") {
         $Second_Swipe = "PAUSE";
@@ -82,6 +82,13 @@ if(isset($_POST['secondSwipe']) && trim($_POST['secondSwipe']) != "") {
                             print " selected";
                         }
                         print ">".$lang['settingsSecondSwipeSkipnext'];
+                        print "</option>\n";
+                        print "
+                        <option value='JUSTPLAY'";
+                        if($Second_Swipe == "JUSTPLAY") {
+                            print " selected";
+                        }
+                        print ">".$lang['settingsSecondSwipeJustPlay'];
                         print "</option>\n";
                         print "
                         <option value='NOAUDIOPLAY'";
