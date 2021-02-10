@@ -33,6 +33,7 @@ __pycache__/
 *.*~
 *.pyc
 *.idea
+venv
 
 
 # Created by https://www.gitignore.io/api/composer
